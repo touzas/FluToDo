@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31320.298
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluToDo.Android", "FluToDo\FluToDo.Android\FluToDo.Android.csproj", "{4AFA10E6-87EB-400E-8415-73E0A9484E3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluToDo", "FluToDo\FluToDo\FluToDo.csproj", "{CB29A1F2-7F39-4FF7-B539-472FE29FCBC3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AFA10E6-87EB-400E-8415-73E0A9484E3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AFA10E6-87EB-400E-8415-73E0A9484E3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AFA10E6-87EB-400E-8415-73E0A9484E3F}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4AFA10E6-87EB-400E-8415-73E0A9484E3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AFA10E6-87EB-400E-8415-73E0A9484E3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AFA10E6-87EB-400E-8415-73E0A9484E3F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{CB29A1F2-7F39-4FF7-B539-472FE29FCBC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB29A1F2-7F39-4FF7-B539-472FE29FCBC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB29A1F2-7F39-4FF7-B539-472FE29FCBC3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CB29A1F2-7F39-4FF7-B539-472FE29FCBC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB29A1F2-7F39-4FF7-B539-472FE29FCBC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB29A1F2-7F39-4FF7-B539-472FE29FCBC3}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {19733035-8597-47D3-8F37-0F5555F235CA}
+	EndGlobalSection
+EndGlobal
