@@ -1,8 +1,8 @@
 # FluToDo
 Yet another ToDo App
 
-* A main branch contains a FluToDo application makes Android Native
-* A master branch contains a FluToDo application makes with Xamarin Forms
+* A **native** branch contains a FluToDo application makes **Android Native**
+* A **master** branch contains a FluToDo application makes with **Xamarin Forms**
 
 
 This application will use a service in the cloud to work with the ToDo items through a Rest API.
