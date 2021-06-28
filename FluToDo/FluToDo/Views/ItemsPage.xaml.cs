@@ -16,12 +16,20 @@ namespace FluToDo.Views
     public partial class ItemsPage : ContentPage
     {
         public ItemsViewModel ViewModel { get; private set; }
+        private TodoItem _currentItem;
 
         public ItemsPage()
         {
             InitializeComponent();
             ViewModel = new ItemsViewModel();
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
             BindingContext = ViewModel;
+        }
+
+        private async void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == FluToDo.ViewModels.ItemsViewModel.CMD_DELETE)
+                await DisplayAlert("Information", string.Format(CultureInfo.InvariantCulture, "ToDo Item {0} has been deleted correctly", _currentItem.Name), "OK");
         }
 
         protected override async void OnAppearing()
@@ -35,25 +43,24 @@ namespace FluToDo.Views
             await ViewModel.LoadList();
             todoListView.IsRefreshing = false;
         }
-        public async void OnDelete(object sender, EventArgs e)
+        public void OnDelete(object sender, EventArgs e)
         {
             var mi = (MenuItem)sender;
-            var item = mi.CommandParameter as TodoItem;
-            if (item == null)
+            _currentItem = mi.CommandParameter as TodoItem;
+            if (_currentItem == null)
                 return;
 
-            ViewModel.DeleteCommand.Execute(item);
-            await DisplayAlert("Information", string.Format(CultureInfo.InvariantCulture, "ToDo Item {0} has been deleted correctly", item.Name), "OK");
+            ViewModel.DeleteCommand.Execute(_currentItem);            
         }
         public async void OnEdit(object sender, EventArgs e)
         {
             var mi = (MenuItem)sender;
-            var item = mi.CommandParameter as TodoItem;
-            if (item == null)
+            _currentItem = mi.CommandParameter as TodoItem;
+            if (_currentItem == null)
                 return;
 
-            var addItem = new NewItemPage(item);
-            addItem.BindingContext = item;
+            var addItem = new NewItemPage(_currentItem);
+            addItem.BindingContext = _currentItem;
             await Navigation.PushAsync(addItem);
         }
 
