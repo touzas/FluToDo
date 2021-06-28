@@ -98,8 +98,16 @@ namespace FluToDo
 
         public async Task<HttpStatusCode> DeleteItem(string id)
         {
-            HttpResponseMessage response = await m_client.DeleteAsync(GetUrl(id));
-            return response.StatusCode;
+            try
+            {
+                HttpResponseMessage response = await m_client.DeleteAsync(GetUrl(id));
+                return response.StatusCode;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return HttpStatusCode.BadRequest;
+            }
         }        
     }
 }

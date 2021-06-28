@@ -63,10 +63,11 @@ namespace FluToDo
             m_lvData = FindViewById<ListView>(Resource.Id.lvData);            
             m_lvData.ItemClick += TodoClick;
             RegisterForContextMenu(m_lvData);
-            GetItems();
 
             m_swipeRefreshLayout = FindViewById<SwipeRefreshLayout>(Resource.Id.swipeRefreshLayout);
-            m_swipeRefreshLayout.SetOnRefreshListener(this);           
+            m_swipeRefreshLayout.SetOnRefreshListener(this);
+
+            GetItems();
         }
 
         public override void OnCreateContextMenu(IContextMenu menu, View v, IContextMenuContextMenuInfo menuInfo)
@@ -97,6 +98,10 @@ namespace FluToDo
                         Toast.MakeText(this, string.Format(CultureInfo.InvariantCulture, GetString(Resource.String.delete_confirm), currentItem.Name), ToastLength.Short).Show();
                         m_adapter.RemoveItem(menuInfo.Position);
                         GetItems();
+                    }
+                    else
+                    {
+                        Toast.MakeText(this, string.Format(CultureInfo.InvariantCulture, GetString(Resource.String.delete_cancel), currentItem.Name), ToastLength.Short).Show();
                     }
                     break;
                 default:
@@ -160,8 +165,9 @@ namespace FluToDo
         }
         private async void GetItems()
         {
+            m_swipeRefreshLayout.Refreshing = true;
             try
-            {
+            {                
                 m_items = await m_controller.Get();
                 m_adapter = new TodoAdapter(this, m_items);
                 m_lvData.Adapter = m_adapter;
@@ -170,6 +176,10 @@ namespace FluToDo
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                m_swipeRefreshLayout.Refreshing = false;
             }
         }
         protected override void OnResume()
@@ -185,10 +195,8 @@ namespace FluToDo
         }
 
         public void OnRefresh()
-        {
-            m_swipeRefreshLayout.Refreshing = true;
+        {           
             GetItems();
-            m_swipeRefreshLayout.Refreshing = false;
         }
     }
 }

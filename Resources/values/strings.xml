@@ -15,6 +15,7 @@
 	<string name="yes">Yes</string>
 	<string name="no">No</string>
 	<string name="delete_confirm">"ToDo item {0} has been deleted correctly"</string>
+	<string name="delete_cancel">"An error ocurred on try to deleted item"</string>
 	<string name="complete">Is Complete</string>
 	
 </resources>
